@@ -6,10 +6,6 @@ import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-<<<<<<< Updated upstream
-=======
-import jakarta.persistence.FetchType;
->>>>>>> Stashed changes
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -31,17 +27,12 @@ public class Sprint {
 	private Long id;
 
 	private String title;
-<<<<<<< Updated upstream
-	
+
+
 	@OneToOne
 	@JoinColumn(name = "author_id")
 	private SprintUser author;
-	
-=======
 
-	private String author;
-
->>>>>>> Stashed changes
 	@Enumerated(EnumType.STRING)
 	private SprintType sprintType;
 
