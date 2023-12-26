@@ -51,4 +51,16 @@ public class Sprint {
 	private LocalDateTime updateDtm;
 
 
+	public Sprint generateSprint(String sprintTitle, SprintType sprintType, SprintUser user) {
+		Sprint sprintInstance = Sprint.builder()
+				.title(sprintTitle)
+				.author(user)
+				.sprintType(sprintType)
+				.sprintStatus(SprintStatus.ISSUED)
+				.insertDtm(LocalDateTime.now())
+				.updateDtm(LocalDateTime.now())
+				.build();
+		return sprintInstance;
+	}
+
 }
