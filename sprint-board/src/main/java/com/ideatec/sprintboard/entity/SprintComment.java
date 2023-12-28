@@ -32,5 +32,5 @@ public class SprintComment {
 	@JoinColumn(name = "insert_user")
 	private SprintUser insert_user;
 	
-	
+	private String comment;
 }

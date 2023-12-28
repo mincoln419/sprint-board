@@ -13,11 +13,11 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -51,7 +51,7 @@ public class Sprint {
 	private LocalDateTime updateDtm;
 
 
-	public Sprint generateSprint(String sprintTitle, SprintType sprintType, SprintUser user) {
+	public static Sprint generateSprint(String sprintTitle, SprintType sprintType, SprintUser user) {
 		Sprint sprintInstance = Sprint.builder()
 				.title(sprintTitle)
 				.author(user)
@@ -63,4 +63,9 @@ public class Sprint {
 		return sprintInstance;
 	}
 
+	public Sprint setDuration(LocalDateTime beginDtm, LocalDateTime finishDtm) {
+		this.beginDtm = beginDtm;
+		this.finishDtm = beginDtm;
+		return this;
+	}
 }

@@ -1,5 +1,7 @@
 package com.ideatec.sprintboard.runnable;
 
+import java.time.LocalDateTime;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,26 +19,23 @@ import lombok.AllArgsConstructor;
 public class SprintBasicDataGenerator implements CommandLineRunner{
 
 	final private SprintRepository sprintRepository;
-	final private SprintUserRepository sprintUserRepository; 
-	
+	final private SprintUserRepository sprintUserRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
-		
+
 		SprintUser user = SprintUser.builder()
 				.username("user1")
 				.userType(UserType.ADMIN)
 				.email("mincoln419@naver.com")
 				.build();
-		
+
 		sprintUserRepository.save(user);
-		
-		Sprint sampleSprint = Sprint.builder()
-			.title("sample title")
-			.author(user)
-			.sprintType(SprintType.SERVICE_REQUEST)
-			.build();
+
+		Sprint sampleSprint = Sprint.generateSprint("Sample Sprint", SprintType.SERVICE_REQUEST, user);
+		sampleSprint.setDuration(LocalDateTime.now().minusDays(1), LocalDateTime.now());
 		sprintRepository.save(sampleSprint);
-		
+
 	}
 
 }
